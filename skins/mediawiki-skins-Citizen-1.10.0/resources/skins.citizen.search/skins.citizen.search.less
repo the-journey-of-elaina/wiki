@@ -1,0 +1,119 @@
+@import '../variables.less';
+@import '../mixins.less';
+
+.citizen-typeahead {
+	position: absolute;
+	z-index: 101;
+	top: 100%;
+	display: none;
+	overflow: auto;
+	width: 100%;
+	max-height: ~'calc( 100vh - var( --height-header ) )';
+	box-sizing: border-box;
+	margin-top: -2px;
+	border-radius: 0 0 var( --border-radius--large ) var( --border-radius--large );
+	.citizen-card( @border-radius: false );
+
+	&-suggestion {
+		padding-top: 6px;
+		padding-bottom: 6px;
+
+		&__thumbnail {
+			overflow: hidden;
+			height: 60px;
+			background-color: var( --background-color-framed );
+			border-radius: var( --border-radius--small );
+
+			img,
+			source {
+				object-fit: cover;
+			}
+		}
+
+		&__text {
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		&__title {
+			color: var( --color-base--emphasized );
+			font-weight: 700;
+
+			&__highlight {
+				color: var( --color-base--subtle );
+			}
+		}
+
+		&__description {
+			margin-top: 0.1rem;
+			color: var( --color-base--subtle );
+			font-size: @content-caption-size;
+		}
+
+		&__title,
+		&__description {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	&-footer {
+		padding-top: var( --border-radius--large );
+		padding-bottom: var( --border-radius--large );
+		border-top: 1px solid var( --border-color-base );
+		border-radius: 0 0 var( --border-radius--large ) var( --border-radius--large );
+		font-size: @content-monospace-size;
+		font-weight: 450;
+
+		&__icon {
+			height: var( --size-icon );
+		}
+
+		&__text {
+			strong {
+				color: var( --color-base--emphasized );
+			}
+		}
+	}
+
+	&-option {
+		&--active {
+			background-color: var( --background-color-primary--hover );
+		}
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		padding-right: 12px;
+		padding-left: 12px;
+		color: var( --color-base );
+	}
+
+	picture {
+		width: 100%;
+		max-width: 70px;
+		margin-right: 12px;
+
+		img,
+		source {
+			width: inherit;
+			height: inherit;
+		}
+	}
+
+	&--expanded {
+		display: block;
+	}
+
+	// Use to hide rounded corner from searchbox
+	&:before {
+		position: absolute;
+		width: var( --width-search-bar );
+		height: var( --border-radius--small );
+		margin-top: ~'calc( var( --border-radius--small ) * -1 )';
+		margin-left: -1px;
+		background: var( --color-surface-1 );
+		content: '';
+	}
+}

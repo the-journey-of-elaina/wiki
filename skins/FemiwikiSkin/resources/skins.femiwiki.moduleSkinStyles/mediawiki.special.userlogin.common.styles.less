@@ -1,0 +1,65 @@
+@import '../variables.less';
+
+// TODO move this to UnifiedExtensionForFemiwiki
+body.mw-special-CreateAccount {
+  // Prevent copy of the question from ConfirmEdit/QuestyCaptcha
+  label[for='mw-input-femiwikiOpenSesame'] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+// 290px is defined in MediaWiki
+@defaultFormWidth: 290px;
+
+.mw-special-CreateAccount .mw-ui-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  #userloginForm {
+    margin: auto;
+
+    form {
+      width: auto;
+      max-width: @defaultFormWidth;
+      margin: auto;
+    }
+  }
+  .mw-createacct-benefits-container {
+    flex: 1 1;
+    margin-left: 4em;
+
+    @media screen and (max-width: @width-breakpoint-mobile) {
+      max-width: @defaultFormWidth;
+      margin: auto;
+    }
+  }
+}
+
+.mw-special-Userlogin .mw-ui-container {
+  #userloginForm form {
+    margin: auto;
+    width: auto;
+    max-width: @defaultFormWidth;
+  }
+
+  #mw-createaccount-cta {
+    width: auto;
+  }
+
+  #mw-createaccount-join {
+    .mw-link-colors();
+
+    &:active {
+      color: @color-primary2;
+      border-color: @color-primary2;
+    }
+
+    &:focus {
+      border-color: @color-primary1;
+      box-shadow: inset 0 0 0 1px @color-primary1;
+    }
+  }
+}

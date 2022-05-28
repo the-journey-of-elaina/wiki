@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"FF-11",
+			"Gebu",
+			"Wolfdietmann",
+			"Zabe",
+			"[https://www.mediawiki.org/wiki/User:Octfx Octfx]"
+		]
+	},
+	"skinname-citizen": "Citizen",
+	"citizen-skin-desc": "Ein responsive Skin entwickelt für das Star Citizen Wiki",
+	"citizen-sitestats-articles-label": "Artikel",
+	"citizen-sitestats-images-label": "Dateien",
+	"citizen-sitestats-users-label": "Benutzer",
+	"citizen-sitestats-edits-label": "Bearbeitungen",
+	"citizen-drawer-search": "Suchmenü",
+	"citizen-footer-desc": "Bearbeiten Sie diesen Text auf [[MediaWiki:Citizen-footer-desc/de]]",
+	"citizen-footer-tagline": "Bearbeiten Sie diesen Text auf [[MediaWiki:Citizen-footer-tagline/de]]",
+	"citizen-action-addsection": "Thema hinzufügen",
+	"citizen-jumptotop": "Zurück nach oben",
+	"citizen-search-fulltext-empty": "Tippe, um zu suchen zu beginnen",
+	"citizen-tagline-ns-help": "Hilfeseite",
+	"prefs-citizen-theme-label": "Thema",
+	"prefs-citizen-theme-option-auto": "Automatisch",
+	"prefs-citizen-theme-option-light": "Hell",
+	"prefs-citizen-theme-option-dark": "Dunkel",
+	"prefs-citizen-fontsize-label": "Schriftgröße",
+	"prefs-citizen-pagewidth-label": "Seitenbreite"
+}

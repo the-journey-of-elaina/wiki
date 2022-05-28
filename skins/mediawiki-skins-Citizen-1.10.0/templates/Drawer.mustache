@@ -1,0 +1,43 @@
+{{!
+	string msg-citizen-drawer-toggle The label used by the drawer button.
+}}
+<input 
+	type="checkbox" 
+	id="mw-drawer-checkbox" 
+	class="mw-checkbox-hack-checkbox">
+<label
+	id="mw-drawer-button" 
+	class="mw-checkbox-hack-button mw-header-button" 
+	for="mw-drawer-checkbox"
+	role="button"
+	aria-controls="mw-drawer"
+	tabindex="0">
+	{{msg-citizen-drawer-toggle}}
+</label>
+<div id="mw-drawer-button-icon">
+	<div id="mw-drawer-button-icon-1" class="mw-drawer-button-icon-div"></div>
+	<div id="mw-drawer-button-icon-2" class="mw-drawer-button-icon-div"></div>
+	<div id="mw-drawer-button-icon-3" class="mw-drawer-button-icon-div"></div>
+</div>
+<aside id="mw-drawer">
+	<header id="mw-drawer-header">
+		<div id="mw-drawer-logo" role="banner">
+			{{>Logo}}
+		</div>
+		{{>SiteStats}}
+		{{#data-drawer-subsearch}}
+		<div id="mw-drawer-search">
+			<input
+				type="search"
+				title="{{msg-citizen-drawer-search}}"
+				placeholder="{{msg-citizen-drawer-search}}"
+				id="mw-drawer-search-input" />
+		</div>
+		{{/data-drawer-subsearch}}
+	</header>
+	<section id="mw-drawer-menu">
+		{{#data-portals-first}}{{>Menu}}{{/data-portals-first}}
+		{{#array-portals-rest}}{{>Menu}}{{/array-portals-rest}}
+		{{#data-portals-languages}}{{>Menu}}{{/data-portals-languages}}
+	</section>
+</aside>

@@ -1,0 +1,143 @@
+.firstHeading {
+	margin: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+#siteSub {
+	display: block;
+	margin-top: 0.2rem;
+}
+
+#siteSub,
+#contentSub,
+#contentSub2 {
+	color: var( --color-base--subtle );
+}
+
+#mw-content-text {
+	.mw-parser-output {
+		& > h1,
+		& > h2,
+		& > h3,
+		& > h4,
+		& > h5,
+		& > h6 {
+			display: flex;
+			align-items: center;
+		}
+
+		.mw-editsection {
+			display: flex;
+			margin-left: auto;
+
+			a {
+				.resource-loader-icon-link-small;
+				padding: @margin-side / 4;
+				background: 0 !important; // Cancel above styles
+				opacity: var( --opacity-icon-base );
+				text-indent: -9999px; // Hide text
+				transition: @transition-opacity-quick;
+
+				&:before {
+					.resource-loader-icon;
+					display: block;
+					background-size: contain;
+				}
+
+				&:hover {
+					opacity: var( --opacity-icon-base--hover );
+				}
+
+				&:active {
+					opacity: var( --opacity-icon-base--active );
+				}
+			}
+
+			> span {
+				display: none;
+			}
+		}
+	}
+}
+
+.citizen-body,
+.mw-body-content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding: 0;
+		margin: 0;
+	}
+
+	h1,
+	h2 {
+		margin-top: @content-margin-top * 3;
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: @content-margin-top * 2;
+	}
+
+	h1 + h2,
+	h2 + h3,
+	h3 + h4,
+	h4 + h5,
+	h5 + h6,
+	table {
+		margin-top: @content-margin-top;
+	}
+
+	p {
+		margin-top: @content-margin-top;
+		margin-bottom: @content-margin-top;
+		overflow-wrap: break-word;
+	}
+
+	ul {
+		margin: @content-margin-top 0 0 @content-margin-top * 2;
+
+		ul {
+			margin: 0 0 0 @content-margin-top * 2;
+		}
+	}
+
+	ol {
+		margin: @content-margin-top 0 0 @content-margin-top * 3;
+
+		ol {
+			margin: 0 0 0 @content-margin-top * 3;
+		}
+	}
+
+	img {
+		vertical-align: middle;
+	}
+
+	a.image {
+		display: block;
+		overflow: hidden;
+
+		> img {
+			transition: @transition-transform-quick;
+		}
+	}
+}
+
+.center {
+	width: 100%;
+	text-align: center;
+}
+
+.plainlist ol,
+.plainlist ul {
+	margin: 0;
+	line-height: inherit;
+	list-style: none none;
+}

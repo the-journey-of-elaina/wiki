@@ -1,0 +1,41 @@
+/*
+ * Citizen - Diff Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../resources/variables.less';
+
+.diff {
+	&-lineno {
+		font-size: @ui-menu-text;
+		font-weight: normal;
+		letter-spacing: 0.75px;
+	}
+
+	&-context {
+		border-color: var( --border-color-base--lighter );
+		background: var( --background-color-framed );
+		color: var( --color-base--subtle );
+	}
+
+	&-addedline {
+		border-color: var( --color-success );
+
+		.diffchange {
+			background: var( --background-color-success );
+		}
+	}
+
+	&-deletedline {
+		border-color: var( --color-destructive );
+
+		.diffchange {
+			background: var( --background-color-destructive );
+		}
+	}
+}
+
+.mw-diff-movedpara-left:after,
+.mw-diff-movedpara-right:after {
+	color: var( --color-base--subtle );
+}

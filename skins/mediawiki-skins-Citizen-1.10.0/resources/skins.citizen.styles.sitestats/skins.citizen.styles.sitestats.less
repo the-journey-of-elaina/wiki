@@ -1,0 +1,32 @@
+@import '../variables.less';
+
+#mw-drawer-sitestats {
+	display: flex;
+	margin-top: 0.4rem;
+	font-size: @ui-menu-text;
+}
+
+.sitestats {
+	&-item {
+		display: flex;
+		align-items: center;
+		margin: 0 10px;
+
+		&-value {
+			color: var( --color-base--emphasized );
+			font-weight: 600;
+		}
+
+		&-label {
+			margin-left: 6px;
+			color: var( --color-base--subtle );
+			letter-spacing: 0.75px;
+		}
+	}
+}
+
+@media only screen and ( max-width: @width-breakpoint-tablet ) {
+	.sitestats-item:not( #sitestats-articles ) {
+		display: none;
+	}
+}

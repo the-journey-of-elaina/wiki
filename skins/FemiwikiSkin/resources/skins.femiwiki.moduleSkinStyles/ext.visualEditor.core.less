@@ -1,0 +1,19 @@
+@import '../variables.less';
+
+.ve-ui-targetWidget {
+  border-radius: 0;
+}
+
+.ve-ui-targetWidget-focused {
+  border-color: @color-progressive;
+  box-shadow: inset 0 0 0 1px @color-progressive;
+}
+
+// Editing surface https://github.com/femiwiki/FemiwikiSkin/issues/249
+.image,
+// Preview of 2017 Wikitext editor
+span[typeof='mw:Image'] > a {
+  & > img {
+    .image();
+  }
+}

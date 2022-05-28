@@ -1,0 +1,72 @@
+/*
+ * Citizen - Recent Changes Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+
+/*!
+ * Styling for Special:Watchlist and Special:RecentChanges
+ */
+#siteSub {
+	display: none !important;
+}
+
+// Mimic siteSub
+.mw-rcfilters-enabled,
+.mw-rcfilters-disabled {
+	.mw-specialpage-summary {
+		margin: -1.4rem 0 1.6rem;
+		color: var( --color-base--subtle );
+		font-size: @content-caption-size;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+.rcoptions {
+	padding: 0;
+	border: 0;
+	margin: @content-margin-top * 2 0;
+
+	legend {
+		width: 100%;
+		padding: @margin-side / 2 0;
+		border-bottom: 1px solid var( --border-color-base );
+		margin-bottom: @margin-side / 2;
+		font-size: @content-small-text-size;
+	}
+}
+
+.mw-changeslist {
+	.comment {
+		color: var( --color-base--subtle );
+	}
+
+	// Need additional parent to override
+	.mw-changeslist-legend {
+		border-color: var( --border-color-base );
+		background-color: var( --background-color-framed );
+		border-radius: var( --border-radius--small );
+	}
+
+	.mw-tag-markers {
+		.mw-tag-marker {
+			color: var( --color-base--subtle );
+		}
+	}
+}
+
+// Need additional parent to override
+.citizen-body {
+	.mw-changeslist h4 {
+		padding: @margin-side / 2 0;
+		border-bottom: 1px solid var( --border-color-base );
+		color: var( --color-base--subtle );
+		font-size: @content-caption-size;
+		font-weight: normal;
+		letter-spacing: 0.75px;
+	}
+}

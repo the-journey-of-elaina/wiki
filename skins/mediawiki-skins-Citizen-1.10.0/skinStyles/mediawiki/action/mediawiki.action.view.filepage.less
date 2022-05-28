@@ -1,0 +1,128 @@
+/*
+ * Citizen - File Page Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+@import '../../../resources/mixins.less';
+
+#filetoc {
+	display: flex;
+	overflow: auto;
+	padding: 0;
+	border-color: var( --border-color-base );
+	margin: 0;
+	background-color: var( --background-color-framed );
+	transition: @transition-margin, @transition-padding;
+	white-space: nowrap;
+
+	li {
+		display: block;
+		padding: 0;
+
+		a {
+			display: block;
+			padding: @margin-side / 2 @margin-side;
+			transition: @transition-background-quick;
+
+			&:hover {
+				background-color: var( --background-color-quiet--hover );
+			}
+
+			&:active {
+				background-color: var( --background-color-quiet--active );
+			}
+		}
+	}
+}
+
+.fullImageLink {
+	background-color: var( --background-color-framed );
+
+	> a {
+		display: block;
+		pointer-events: none;
+
+		> img {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			margin: 0 auto;
+			.boxshadow(1);
+		}
+	}
+
+	.mw-filepage-resolutioninfo {
+		padding: @margin-side / 2 @margin-side;
+		border: 1px solid var( --border-color-base );
+		text-align: center;
+		transition: @transition-margin, @transition-padding;
+	}
+}
+
+.fullMedia {
+	padding: @margin-side / 2 @margin-side;
+	border: 1px solid var( --border-color-base );
+	border-top: 0;
+	background-color: var( --background-color-framed );
+	font-size: smaller;
+	text-align: center;
+	transition: @transition-margin;
+
+	.mw-mmv-filepage-buttons {
+		display: flex;
+		justify-content: center;
+		margin-top: @margin-side / 2;
+	}
+}
+
+.multipageimage {
+	display: flex;
+	overflow: visible;
+	justify-content: center;
+
+	.fullImageLink {
+		margin: 0 !important;
+	}
+
+	> a > img {
+		margin: 0;
+	}
+
+	tr {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.multipageimagenavbox {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 0.8rem;
+
+		.thumb {
+			margin: 0 !important;
+
+			&:first-of-type {
+				order: -1;
+			}
+
+			.lazy {
+				filter: none !important;
+			}
+		}
+
+		hr,
+		br {
+			display: none;
+		}
+	}
+}
+
+.mw_metadata {
+	td,
+	th {
+		border: 1px solid var( --border-color-base );
+		background-color: var( --background-color-framed );
+	}
+}

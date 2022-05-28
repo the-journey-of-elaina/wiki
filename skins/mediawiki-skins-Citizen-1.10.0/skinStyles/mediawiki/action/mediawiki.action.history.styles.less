@@ -1,0 +1,54 @@
+/*
+ * Citizen - Page History Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+
+#mw-history-compare {
+	margin: @content-margin-top 0;
+}
+
+.mw-history-compareselectedversions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	margin: @content-margin-top 0;
+	font-size: @ui-menu-text;
+}
+
+#pagehistory {
+	margin: 0;
+	list-style: none;
+
+	li {
+		padding: 10px 0;
+		border-bottom: 1px solid var( --border-color-base );
+		font-size: @content-monospace-size;
+		transition: background 0.2s ease;
+
+		&.selected {
+			color: var( --color-base );
+			outline: 0;
+
+			&.before {
+				background-color: var( --background-color-primary--active );
+			}
+
+			&.after {
+				background-color: var( --background-color-primary--hover );
+			}
+		}
+
+		&:hover {
+			background-color: var( --background-color-quiet--hover );
+		}
+	}
+}
+
+.skin-citizen-dark {
+	#pagehistory li.selected a {
+		color: @color-accent90;
+	}
+}

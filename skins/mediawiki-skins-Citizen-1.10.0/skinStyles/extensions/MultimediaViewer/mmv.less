@@ -1,0 +1,181 @@
+/*
+ * Citizen - MultimediaViewer Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+@import '../../../resources/mixins.less';
+
+.skin-citizen {
+	.mw-mmv {
+		&-progress {
+			top: 0;
+			height: 2px;
+			background-color: transparent;
+
+			&-percent {
+				height: inherit;
+			}
+		}
+
+		&-post-image {
+			overflow: hidden;
+			background-color: var( --background-color-dp-04 );
+			border-radius: var( --border-radius--large ) var( --border-radius--large ) 0 0;
+			color: var( --color-base--emphasized );
+		}
+
+		&-image-metadata {
+			border-color: var( --border-color-base );
+			background-color: var( --background-color-framed );
+			color: var( --color-base );
+		}
+
+		&-info-box {
+			border-color: var( --border-color-base );
+			background-color: var( --background-color-dp-02 );
+		}
+
+		&--label {
+			background-color: var( --background-color-dp-02 );
+			color: var( --color-base );
+		}
+
+		&-credit,
+		&-image-links li {
+			color: var( --color-base--subtle );
+		}
+
+		&-stripe-button.mw-mmv-description-page-button {
+			margin: 11px var( --padding-page );
+			font-size: @ui-menu-text;
+		}
+
+		&-permission-box {
+			h3 {
+				color: var( --color-base );
+			}
+
+			.mw-mmv-permission-text {
+				.mw-mmv-permission-text-fader {
+					background-image: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, var( --background-color-dp-02 ) 100% );
+				}
+			}
+		}
+
+		&-title-para .mw-mmv-ttf-ellipsis {
+			background-color: var( --background-color-dp-04 );
+			box-shadow: none;
+		}
+
+		&-ttf-container .mw-mmv-ttf-ellipsis:before {
+			background-image: linear-gradient( to right, rgba( 255, 255, 255, 0 ) 0%, var( --background-color-dp01 ) 100% );
+		}
+
+		&-dialog {
+			background-color: var( --background-color-dp-08 );
+			.boxshadow(3);
+
+			.mw-mmv-dialog-down-arrow {
+				background-color: var( --background-color-dp-08 );
+			}
+		}
+
+		&-reuse-dialog .mw-mmv-reuse-tabs {
+			border-color: var( --border-color-base );
+		}
+
+		&-options-dialog-header {
+			color: var( --color-base--emphasized );
+		}
+
+		&-options-text-header {
+			color: var( --color-base );
+		}
+
+		&-options-text-body {
+			color: var( --color-base--subtle );
+		}
+
+		&-download-dialog .mw-mmv-dialog-down-arrow {
+			background-color: var( --background-color-framed );
+		}
+
+		&-download-pane {
+			.mw-mmv-download {
+				&-area .mw-mmv-download-preview-link {
+					color: var( --color-base--subtle );
+				}
+
+				&-attribution {
+					background-color: var( --background-color-framed );
+					color: var( --color-base );
+
+					&:hover {
+						background-color: var( --background-color-framed--hover );
+						color: var( --color-base--emphasized );
+					}
+
+					&-attribution-cta-invite {
+						color: var( --color-base--subtle );
+					}
+				}
+			}
+		}
+
+		&-download-button,
+		&-reuse-button,
+		&-options-button,
+		&-close,
+		&-fullscreen,
+		&-next-image,
+		&-prev-image {
+			background-position: center;
+			background-size: 20px; // smaller icon
+		}
+
+		/* So that tapping the border won't open the file */
+		&-next-image {
+			right: 0;
+		}
+
+		&-prev-image {
+			left: 0;
+		}
+
+		/* Increase click area */
+		&-next-image,
+		&-prev-image {
+			z-index: 1002; // avoid covering other buttons
+			top: 20vh !important; // override inline style
+			height: 50vh;
+		}
+	}
+}
+
+@media only screen and ( max-width: @width-breakpoint-tablet ) {
+	.skin-citizen {
+		.mw-mmv {
+			&-image {
+				/* So that the image is not clickable on mobile */
+				img {
+					cursor: auto;
+					pointer-events: none;
+				}
+
+				&-metadata-links-column {
+					width: auto; // Fix mobile bouncing
+					float: none;
+				}
+			}
+
+			&-untruncated {
+				.mw-mmv-image-metadata-desc-column,
+				.mw-mmv-image-metadata-links-column {
+					width: auto;
+					max-width: none;
+				}
+			}
+		}
+	}
+}

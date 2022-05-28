@@ -1,0 +1,292 @@
+/*
+ * Citizen
+ *
+ * SkinStyles for Extension:VisualEditor
+ * Module: ext.visualEditor.desktopArticleTarget.init
+ * Version: REL1_35 cc3466a
+ *
+ * Date: 2021-08-04
+ * Note: VE has many modules so they are combined in one file for now
+*/
+
+.ve-activated {
+	.mw-header {
+		z-index: 3; // Move lower to accompany VE
+		background-color: var( --color-surface-0 );
+
+		&:before {
+			box-shadow: none;
+		}
+	}
+
+	#page-tools {
+		z-index: 1; // Fix collision
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	#content {
+		overflow: visible;
+	}
+
+	// Reset VE disabled style to allow page action buttons to work
+	.mw-body-header {
+		opacity: 1;
+		pointer-events: auto;
+		user-select: auto;
+	}
+
+	.page-heading {
+		opacity: 0.5;
+	}
+
+	// Since ToC does not appear in VE
+	.mw-body-header,
+	.citizen-body {
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+
+	.mw-footer {
+		z-index: 2; // Fix collision with VE elements
+	}
+}
+
+.skin-citizen {
+	.ve-ui {
+		&-toolbar {
+			> .oo-ui-toolbar-bar {
+				border-color: var( --border-color-base--darker );
+				background-color: var( --color-surface-0 );
+
+				.oo-ui-toolbar-bar {
+					border: 0;
+					background-color: transparent;
+				}
+
+				> .oo-ui-toolbar-tools {
+					flex-basis: 50%;
+					flex-grow: 1;
+					overflow-x: auto;
+					overflow-y: hidden;
+				}
+
+				> .oo-ui-toolbar-actions {
+					order: 5; // Second order
+					border-left: 1px solid var( --border-color-base );
+				}
+
+				> .oo-ui-windowManager {
+					order: 10; // Third order
+				}
+
+				.oo-ui-toolbar-tools {
+					display: inline-block;
+					white-space: nowrap;
+				}
+
+				/* Fix inline height */
+				.oo-ui-popupToolGroup-tools.oo-ui-popupToolGroup-active-tools {
+					overflow: auto !important;
+					height: auto !important;
+				}
+			}
+		}
+
+		&-surface {
+			&-visual {
+				.ve-ce-documentNode {
+					font-size: 1rem; // So that same font size as the actual page
+				}
+			}
+		}
+
+		&-targetWidget {
+			border-color: var( --border-color-input );
+		}
+
+		&-overlay {
+			font-family: var( --font-family-base );
+
+			&-global {
+				z-index: 100;
+			}
+		}
+
+		&-mwSaveDialog {
+			&-summary {
+				background-color: transparent;
+			}
+
+			&-options {
+				border-color: var( --border-color-base );
+				background-color: var( --color-surface-2 );
+			}
+
+			&--editSummary-count {
+				border-color: var( --border-color-base );
+			}
+
+			&-license {
+				color: var( --color-base--subtle );
+			}
+
+			// Preview and review change panels
+			&-savePanel {
+				~ .oo-ui-panelLayout {
+					background-color: var( --color-surface-0 );
+				}
+			}
+
+			// Give preview content a max width
+			.mw-parser-output {
+				max-width: var( --width-layout );
+				margin-right: auto;
+				margin-left: auto;
+			}
+		}
+
+		&-mwTransclusionDialog-addParameterFieldset .ve-ui-mwParameterSearchWidget {
+			border-color: var( --border-color-base );
+		}
+
+		&--mwParameterResultWidget {
+			&.oo-ui-optionWidget-highlighted {
+				background-color: var( --background-color-primary--hover );
+			}
+
+			&-description {
+				color: var( --color-base--subtle );
+			}
+		}
+
+		&-mwTemplatePage-description {
+			color: var( --color-base--subtle );
+		}
+	}
+
+	.oo-ui-toolbar-position-top .ve-ui-toolbarDialog-position-above {
+		border-color: var( --border-color-base--darker );
+	}
+}
+
+// Fix weird compressed text bug
+.ve-init-mw-tempWikitextEditorWidget {
+	width: 100% !important;
+	background: transparent;
+}
+
+.ve-init-mw-desktopArticleTarget {
+	&-toolbar {
+		margin-right: var( --padding-page--negative );
+		margin-left: var( --padding-page--negative );
+
+		&.ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+			top: 56px; // Fixed under header
+		}
+
+		&Placeholder {
+			border: 0;
+			box-shadow: none;
+
+			&-open {
+				height: 42px;
+			}
+		}
+	}
+}
+
+// Make toolbar more smaller screen friendly
+// Well at least I did by best
+@media ( max-width: 800px ) {
+	.ve-activated {
+		.mw-header {
+			background-color: transparent; // Because header is taller than toolbar
+		}
+	}
+
+	.ve-ui-toolbar {
+		> .oo-ui-toolbar-bar {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&-floating {
+			z-index: 4;
+		}
+	}
+
+	.ve-init-mw-desktopArticleTarget {
+		&-toolbar {
+			&.ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+				top: 0; // stick to top
+			}
+
+			.ve-ui-toolbar-group {
+				// Hide some dropdown tools in smaller screen
+				// help - Help
+				&-help {
+					display: none;
+				}
+			}
+
+			// Shorten save button
+			// Use CSS magic to create an icon
+			// Will change if I figure out a way to load the icon only for VE
+			.ve-ui-toolbar-saveButton {
+				width: 60px !important;
+				height: 42px !important;
+				padding: 0 !important;
+
+				&:before {
+					top: 12px;
+					transform: rotate( -45deg );
+				}
+
+				&:after {
+					bottom: 12px;
+					transform: rotate( 45deg );
+				}
+
+				&:before,
+				&:after {
+					position: absolute;
+					left: 30px;
+					display: block;
+					width: 2px;
+					height: 11px;
+					background: var( --color-base--subtle );
+					content: '';
+				}
+
+				.oo-ui-tool-title {
+					display: none !important;
+				}
+			}
+
+			// Active state
+			.oo-ui-widget-enabled {
+				.ve-ui-toolbar-saveButton {
+					&:before,
+					&:after {
+						background: var( --color-base--emphasized );
+					}
+				}
+			}
+		}
+	}
+	// change save button icon from " > " to " < " for RTL language
+	.rtl {
+		.ve-init-mw-desktopArticleTarget-toolbar {
+			.ve-ui-toolbar-saveButton {
+				&:before {
+					transform: rotate( 45deg );
+				}
+
+				&:after {
+					transform: rotate( -45deg );
+				}
+			}
+		}
+	}
+}

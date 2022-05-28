@@ -1,0 +1,50 @@
+/*
+ * Citizen - Cookie Warning Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+@import '../../../resources/mixins.less';
+
+.mw-cookiewarning-container {
+	right: 0;
+	width: auto;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 var( --padding-page );
+	border: 1px solid var( --border-color-base );
+	margin: 10px;
+	background-color: #343a40; // dark base 70
+	border-radius: var( --border-radius--large );
+	font-size: @content-monospace-size;
+	line-height: 1.4;
+	.boxshadow(5);
+
+	.mw-cookiewarning-text {
+		padding: 20px 0;
+		margin-bottom: 0; // Override media styles
+		font-size: inherit;
+		font-weight: 500;
+	}
+
+	form {
+		display: flex;
+		padding: 15px 0;
+	}
+}
+
+@media only screen and ( max-width: @width-breakpoint-tablet ) {
+	.mw-cookiewarning-container {
+		flex-wrap: wrap;
+
+		.mw-cookiewarning-text {
+			flex-wrap: wrap;
+			padding-bottom: 0;
+		}
+
+		form {
+			width: 100%;
+			margin-left: -8px; // cancel out the button margin
+		}
+	}
+}

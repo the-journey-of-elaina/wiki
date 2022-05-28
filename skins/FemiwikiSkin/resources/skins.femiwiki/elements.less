@@ -1,0 +1,119 @@
+@import '../variables.less';
+
+* {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+// TODO: Stop targeting tags. https://github.com/femiwiki/FemiwikiSkin/issues/20
+html {
+  font-size: unit(@font-size-root-default, px);
+  @media (max-width: @width-breakpoint-mobile-small) {
+    font-size: 16px;
+  }
+
+  font-family: @font-family;
+}
+
+body {
+  padding: 0;
+  color: @color-base15;
+  line-height: @line-height;
+
+  // Word breaks shouldn't be used for CJK text
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+:focus {
+  outline: none;
+}
+
+::selection {
+  background-color: @color-background1;
+}
+
+// Many components of MediaWiki core and extensions assume the below rule is true. It is not removable now.
+a {
+  text-decoration: none;
+  .mw-link-colors();
+}
+
+// Quote
+blockquote {
+  position: relative;
+  padding: 1em;
+  margin: 1em 0;
+  overflow: hidden;
+  border: none;
+  background-color: #f0f0f0;
+}
+
+input:focus {
+  outline: 1px solid #474186;
+}
+
+input,
+input[type='search'],
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: 1px solid #888;
+  line-height: 1.4;
+  font-size: 1rem;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  position: relative;
+  top: 3px;
+  width: 1rem;
+  height: 1rem;
+}
+
+input:checked {
+  background-color: #4f4b93;
+}
+
+input[type='text'],
+input[type='password'] {
+  padding: 0.1rem 0.2rem;
+  height: 1.8rem;
+  line-height: 1.4rem;
+}
+
+select {
+  padding: 0.1rem 0.2rem;
+  line-height: 1.4rem;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  border-width: 0;
+  font-weight: normal;
+  padding: 0.2rem 0.5rem;
+}
+
+input[type='submit'],
+button {
+  padding: 0.2rem 0.5rem;
+  color: #fff;
+  background-color: @color-progressive;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+th,
+td {
+  background-color: transparent;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #ddd;
+}
+
+tt,
+.mw-code {
+  font-family: monospace, monospace;
+}

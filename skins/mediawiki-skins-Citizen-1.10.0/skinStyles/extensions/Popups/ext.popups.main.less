@@ -1,0 +1,114 @@
+/*
+ * Citizen - Popups Styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+@import '../../../resources/mixins.less';
+
+.mwe-popups {
+	background-color: var( --background-color-dp-08 );
+	.boxshadow(4);
+
+	.mwe-popups-container {
+		color: var( --color-base );
+	}
+
+	.mwe-popups-extract {
+		color: var( --color-base );
+
+		/* Stylelint rule broken for vendor prefixes: https://github.com/stylelint/stylelint/issues/1939 */
+		/* stylelint-disable function-linear-gradient-no-nonstandard-direction */
+		&[ dir='ltr' ]:after {
+			/* @noflip */
+			background-image: linear-gradient( to right, transparent, var( --background-color-dp-08 ) 50% );
+		}
+
+		&[ dir='rtl' ]:after {
+			/* @noflip */
+			background-image: linear-gradient( to left, transparent, var( --background-color-dp-08 ) 50% );
+		}
+		/* stylelint-enable function-linear-gradient-no-nonstandard-direction */
+	}
+
+	/* Triangles/Pointers */
+	&.mwe-popups-no-image-pointer {
+		&:after {
+			border-bottom-color: var( --background-color-dp-08 );
+		}
+
+		&:before {
+			border-bottom-color: var( --border-color-base--lighter );
+		}
+	}
+
+	&.mwe-popups-image-pointer {
+		&:before {
+			border-bottom-color: var( --border-color-base--lighter );
+		}
+
+		&:after {
+			border-bottom-color: var( --background-color-dp-08 );
+		}
+
+		&.flipped-x {
+			&:before {
+				border-bottom-color: var( --border-color-base--lighter );
+			}
+
+			&:after {
+				border-bottom-color: var( --background-color-dp-08 );
+			}
+		}
+	}
+
+	&.flipped-x.mwe-popups-is-tall {
+		&:before {
+			border-bottom-color: var( --border-color-base--lighter );
+		}
+	}
+
+	&.flipped-x-y {
+		&:before {
+			border-top-color: var( --border-color-base--lighter );
+		}
+
+		&:after {
+			border-top-color: var( --background-color-dp-08 );
+		}
+
+		&.mwe-popups-is-tall {
+			&:after {
+				border-top-color: var( --background-color-dp-08 );
+			}
+
+			&:before {
+				border-top-color: var( --border-color-base--lighter );
+			}
+		}
+	}
+
+	&.flipped-y {
+		&:after {
+			border-top-color: var( --background-color-dp-08 );
+		}
+
+		&:before {
+			border-top-color: var( --border-color-base--lighter );
+		}
+	}
+
+	/* referencePreview.less */
+	&.mwe-popups-type-reference {
+		.mwe-popups-extract {
+			.mwe-popups-fade {
+				background-image: linear-gradient( transparent, var( --background-color-dp-08 ) );
+			}
+
+			/* T266859 */
+			.mw-parser-output {
+				overflow-wrap: break-word;
+			}
+		}
+	}
+}

@@ -1,0 +1,40 @@
+ {{!
+	@typedef object footerItem
+	@prop string id of list item element
+	@prop string html of list item
+	@prop footerItem[] items
+
+	@typedef object footerRow
+	@prop string className of list element
+	@prop string id of list element
+	@prop footerItem[] array-items
+
+	footerRow[] array-footer-rows iterable list of footer rows
+	footerRow[] array-footer-icons iterable list of footer icons
+	string msg-sitetitle
+	string msg-citizen-footer-desc
+	string msg-citizen-footer-tagline
+}}
+
+<footer class="mw-footer" {{{html-user-language-attributes}}}>
+	{{#html-lastmodified}}
+	<div class="last-modified-bar">
+		<div class="last-modified-bar-content">
+			<div class="last-modified-bar-icon"></div>
+			<div class="last-modified-bar-text">{{{.}}}</div>
+		</div>
+	</div>
+	{{/html-lastmodified}}
+	<div id="footer-content">
+		<h2 id="footer-sitetitle" class="mw-wiki-title">{{>Wordmark}}</h2>
+		<p id="footer-desc">{{{msg-citizen-footer-desc}}}</p>
+		{{#data-citizen-places}}{{>Footer__row}}{{/data-citizen-places}}
+		{{#data-citizen-info}}{{>Footer__row}}{{/data-citizen-info}}
+	</div>
+	<div id="footer-bottom">
+		<div id="footer-bottom-content">
+			<div id="footer-tagline">{{{msg-citizen-footer-tagline}}}</div>
+			{{#data-citizen-icons}}{{>Footer__row}}{{/data-citizen-icons}}
+		</div>
+	</div>
+</footer>

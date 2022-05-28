@@ -1,0 +1,88 @@
+/*
+ * Citizen - Upload Wizard
+ * https://starcitizen.tools
+ */
+
+@import '../../../resources/variables.less';
+@import '../../../resources/mixins.less';
+/*
+ * resources/uploadWizard.css
+ */
+#upload-wizard {
+	min-width: auto;
+	max-width: none; // handled by .mw-body-content
+}
+
+#mwe-upwiz-tutorial img {
+	max-width: 100%; // don't exceed container
+	height: auto;
+}
+
+#mwe-upwiz-files {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.filled + .filled {
+	border-top-color: var( --border-color-base );
+}
+
+.mwe-upwiz-file:hover .mwe-upwiz-visible-file {
+	background: var( --background-color-primary--hover ) !important;
+}
+
+.mwe-upwiz-file.odd .mwe-upwiz-visible-file {
+	background: var( --background-color-framed );
+}
+
+#mwe-upwiz-deeds-thumbnails {
+	background-color: var( --background-color-framed );
+}
+
+.mwe-upwiz-thumbnail-link canvas,
+.mwe-upwiz-thumbnail-link img {
+	.boxshadow(2);
+}
+
+.mwe-upwiz-singleLanguageInputWidget {
+	border-color: var( --border-color-base );
+	background-color: var( --background-color-framed );
+}
+
+.mwe-upwiz-copyMetadataWidget {
+	border-color: var( --border-color-base );
+}
+
+#mwe-upwiz-stepdiv-details .mwe-upwiz-data {
+	width: auto;
+	max-width: 100%;
+}
+
+/*
+ * resources/jquery.arrowSteps/jquery.arrowSteps.css
+ */
+.arrowSteps {
+	border-color: var( --border-color-base );
+}
+
+.arrowSteps li {
+	background-color: var( --background-color-framed );
+	color: var( --color-base--subtle );
+}
+
+#mwe-upwiz-steps li.head {
+	background-color: var( --background-color-primary--hover );
+	color: var( --color-primary );
+}
+
+.arrowSteps li.arrow:after {
+	border-left-color: var( --background-color-framed );
+}
+
+.arrowSteps li.arrow:before {
+	border-left-color: var( --background-color-dp-00 );
+}
+
+#mwe-upwiz-steps li.head:after {
+	border-left-color: var( --background-color-primary--hover );
+}

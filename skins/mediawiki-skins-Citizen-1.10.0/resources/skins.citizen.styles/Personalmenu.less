@@ -1,0 +1,202 @@
+#personalmenu {
+	position: relative;
+	font-size: @ui-menu-text;
+	opacity: 0;
+	pointer-events: none;
+	transition: @transition-opacity-quick;
+	user-select: none;
+	visibility: hidden;
+
+	&-checkbox {
+		&:checked {
+			~ #personalmenu {
+				opacity: 1;
+				pointer-events: auto;
+				visibility: visible;
+
+				&-button {
+					&:after {
+						opacity: var( --opacity-icon-base--hover );
+					}
+
+					&:active:after {
+						opacity: var( --opacity-icon-base--active );
+					}
+				}
+			}
+		}
+	}
+
+	&-button {
+		position: relative;
+		font-size: 0; // Hide label text
+
+		&:after {
+			display: block;
+			width: inherit;
+			height: inherit;
+			background-position: center;
+			background-repeat: no-repeat;
+			content: '';
+			opacity: var( --opacity-icon-base );
+			transition: @transition-opacity-quick;
+		}
+
+		&:hover:after {
+			opacity: var( --opacity-icon-base--hover );
+		}
+
+		&:active:after {
+			opacity: var( --opacity-icon-base--active );
+		}
+	}
+}
+
+#p-personal {
+	position: fixed;
+	top: var( --height-header );
+	right: var( --padding-page );
+	left: var( --padding-page );
+	margin: 0;
+
+	ul {
+		overflow: hidden; // So that hover state is rounded
+		.citizen-card;
+	}
+
+	li:not( #pt-usergroups ):not( #pt-userpage ) {
+		a {
+			.menu-item-link;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px 20px;
+
+			&:after {
+				.resource-loader-list-icon;
+				display: block;
+				margin-left: @icon-padding;
+				background-size: contain;
+				opacity: var( --opacity-icon-base );
+				transition: @transition-opacity-quick;
+			}
+
+			&:hover {
+				.menu-item-link-hover;
+
+				&:after {
+					opacity: var( --opacity-icon-base--hover );
+				}
+			}
+
+			&:active {
+				.menu-item-link-active;
+
+				&:after {
+					opacity: var( --opacity-icon-base--active );
+				}
+			}
+		}
+
+		// Need to be specific to override
+		&#pt-login {
+			a {
+				.button-blue;
+
+				&:hover {
+					.button-blue-hover;
+				}
+
+				&:active {
+					.button-blue-active;
+				}
+			}
+		}
+
+		&#pt-logout {
+			a {
+				.button-red;
+
+				&:hover {
+					.button-red-hover;
+				}
+
+				&:active {
+					.button-red-active;
+				}
+			}
+		}
+	}
+
+	#pt {
+		&-user {
+			&page {
+				padding: 16px 12px 0 12px;
+
+				a {
+					justify-content: flex-start;
+					padding: 4px 8px;
+					color: var( --color-base--emphasized ) !important;
+					font-size: 16px;
+					font-weight: 600;
+					word-break: break-word;
+				}
+			}
+
+			&groups {
+				display: flex;
+				flex-wrap: wrap;
+				padding: 0 16px;
+				margin-bottom: 8px;
+
+				a {
+					padding: 2px 4px;
+					color: var( --color-base--subtle );
+				}
+			}
+
+			&page,
+			&groups {
+				line-height: 1;
+
+				a {
+					display: block;
+					transition: @transition-color-quick;
+
+					&:hover {
+						color: var( --color-primary--hover ) !important;
+					}
+
+					&:active {
+						color: var( --color-primary--active ) !important;
+					}
+				}
+			}
+
+			&contris {
+				padding: 0 20px 10px 20px;
+				border-bottom: 1px solid var( --border-color-base );
+				font-weight: 450;
+			}
+		}
+
+		&-anonuserpage {
+			display: none;
+		}
+	}
+}
+
+.skin-citizen-dark {
+	#personalmenu-button:after,
+	#p-personal a:after {
+		filter: invert( 1 );
+	}
+}
+
+@media ( min-width: @width-breakpoint-tablet ) {
+	#p-personal {
+		position: absolute;
+		right: 0;
+		left: unset;
+		min-width: 250px;
+	}
+}

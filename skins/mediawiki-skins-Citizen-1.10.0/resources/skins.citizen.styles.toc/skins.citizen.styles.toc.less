@@ -1,0 +1,269 @@
+@import '../variables.less';
+@import '../mixins.less';
+
+@media screen {
+	html {
+		// Make ToC width accessible as CSS var
+		--width-toc: @width-toc;
+	}
+
+	.toc {
+		position: fixed;
+		top: var( --height-header );
+		left: 0;
+		width: 100%;
+		max-width: ~'calc( var( --width-toc ) - '@padding-page * 2 ~')';
+		padding: @padding-page;
+		color: var( --color-base--subtle );
+		font-size: @ui-menu-text;
+
+		&::-webkit-scrollbar {
+			width: 0; // Hide bar on toc
+		}
+
+		&title {
+			h2 {
+				margin: 0;
+				color: var( --color-base--subtle ) !important;
+				font-size: inherit;
+				font-weight: normal;
+				letter-spacing: 0.75px;
+			}
+		}
+
+		&toggle {
+			&span {
+				display: none;
+			}
+
+			&checkbox:checked ~ ul {
+				display: block !important; // Force display
+			}
+		}
+
+		li {
+			border-left: 2px solid var( --border-color-base--darker );
+
+			&.toclevel-2,
+			&.toclevel-3,
+			&.toclevel-4,
+			&.toclevel-5,
+			&.toclevel-6 {
+				margin-left: 10px;
+			}
+		}
+
+		li.active {
+			border-color: var( --color-primary );
+			color: var( --color-primary );
+
+			> a {
+				color: inherit !important;
+			}
+		}
+
+		a {
+			display: block;
+			padding: 0.25rem 0 0.25rem 10px;
+			color: var( --color-base );
+
+			&:hover {
+				color: var( --color-primary--hover );
+			}
+
+			&:active {
+				color: var( --color-primary--active );
+			}
+		}
+
+		&number {
+			margin-right: 4px;
+			opacity: 0.7;
+		}
+
+		&text {
+			font-weight: 500;
+		}
+
+		ul {
+			margin: 0 !important;
+			list-style: none;
+		}
+
+		> ul {
+			position: relative;
+			z-index: 2;
+			display: block;
+			overflow: visible auto;
+			max-height: ~'calc( 100vh - var( --height-header ) * 2 )';
+			padding-right: 10px;
+			margin: @content-margin-top * 0.75 0 0 0 !important;
+			font-weight: 450;
+			overscroll-behavior: contain;
+		}
+	}
+
+	@media ( max-width: @width-breakpoint-desktop-wide ) {
+		.toc {
+			z-index: 11; // Higher than header
+			padding: 0;
+			margin: 0 var( --padding-page );
+			pointer-events: none;
+
+			&:before,
+			&:after {
+				content: unset; // Disable fade
+			}
+
+			&toggle {
+				&span {
+					display: block;
+					font-size: 0 !important;
+				}
+
+				&label {
+					position: fixed;
+					z-index: 7;
+					right: 0;
+					bottom: 0;
+					display: block;
+					width: 48px;
+					height: 48px;
+					border-top: 1px solid var( --border-color-base );
+					border-left: 1px solid var( --border-color-base );
+					background-color: var( --color-surface-2 );
+					border-top-left-radius: var( --border-radius--large );
+					cursor: pointer;
+					pointer-events: auto;
+					.boxshadow(4);
+
+					&:hover {
+						background-color: var( --color-surface-3 );
+						.boxshadow(5);
+
+						&:before {
+							opacity: var( --opacity-icon-base--hover );
+						}
+					}
+
+					&:active {
+						background-color: var( --color-surface-1 );
+
+						&:before {
+							opacity: var( --opacity-icon-base--active );
+						}
+					}
+
+					&:before {
+						.resource-loader-icon;
+						display: block;
+						opacity: var( --opacity-icon-base );
+					}
+				}
+
+				&checkbox:not( :checked ) {
+					~ .toctitle h2,
+					~ ul {
+						transform: translateX( -120% );
+					}
+				}
+			}
+
+			&title h2 {
+				position: absolute;
+				z-index: 3;
+				width: ~'calc( 100% - var( --padding-page ) * 2 )';
+				padding: 20px var( --padding-page ) 10px var( --padding-page );
+				background: var( --color-surface-1 );
+				border-radius: var( --border-radius--large ) var( --border-radius--large ) 0 0;
+			}
+
+			> ul {
+				display: block !important; // So that animation is visible
+				max-height: ~'calc( 100vh - var( --height-header ) * 3 )';
+				padding: 0 var( --padding-page ) 20px var( --padding-page ); // hardcoded for now
+				border: 1px solid var( --border-color-base );
+				margin: 45px 0 0 0 !important;
+				background: var( --color-surface-1 );
+				border-radius: 0 0 var( --border-radius--large ) var( --border-radius--large );
+
+				/**
+				 * Ideally we'd have this shadow on the .toc container, but the
+				 * container can't move with the checkbox.
+				 *
+				 * Assigning the regular box shadow here won't work because then the
+				 * .toctitle won't have any shadow and look weird. Giving .toctitle a
+				 * shadow causes it to go over the `> ul` which is no good.  So we need to
+				 * have a duplicate shadow here shifted up to reach the .toctitle. One
+				 * would think the shadows overlapping would look funny on the sides, but
+				 * it actually looks fine. (The trick *is* visible if you look very closely
+				 * for it, though.)
+				 *
+				 * Previous approach used padding-top equal to the height of the
+				 * .toctitle, with the .toctitle being absolutely positioned. But this
+				 * causes the `> ul` y-scrollbar to look funky in two ways: it clearly
+				 * pokes out from .toctitle's border-top-right-radius; and when it's
+				 * scrolled down slightly, it still appears on the scrollbar as if it's at
+				 * the top, exposing the hack.
+				 */
+				// .boxshadow(3);
+				// => box-shadow: 0 10px 20px rgba( 0, 0, 0, 0.0475 ), 0 6px 6px rgba( 0, 0, 0, 0.0575 );
+				box-shadow: 0 10px 20px rgba( 0, 0, 0, 0.0475 ), 0 6px 6px rgba( 0, 0, 0, 0.0575 ), 0 (10px - 45px) 20px rgba( 0, 0, 0, 0.0475 ), 0 (6px - 45px) 6px rgba( 0, 0, 0, 0.0575 );
+				pointer-events: auto;
+			}
+		}
+
+		.citizen-animations-ready {
+			.toc {
+				&title h2,
+				> ul {
+					transition: @transition-transform-quick;
+				}
+			}
+		}
+
+		.skin-citizen-dark {
+			.toc {
+				&togglelabel {
+					&:before {
+						filter: invert( 1 );
+					}
+				}
+			}
+		}
+	}
+
+	// Special toggle styles on pointer devices since scrollbar is visible
+	@media ( max-width: @width-breakpoint-desktop-wide ) and ( hover: hover ) {
+		.toctogglelabel {
+			border-right: 1px solid var( --border-color-base );
+			border-top-right-radius: var( --border-radius--large );
+		}
+	}
+
+	@media ( max-width: @width-breakpoint-tablet ) {
+		.toc {
+			right: 0;
+
+			> ul {
+				max-height: 60vh;
+			}
+		}
+	}
+
+	@media ( max-width: @width-breakpoint-mobile ) {
+		.toc {
+			max-width: ~'calc(100vw - var( --padding-page ) * 2)';
+		}
+	}
+
+	@media ( min-width: @width-breakpoint-desktop-wide ) {
+		.skin-citizen-has-toc {
+			.mw-body-header,
+			.citizen-body {
+				margin-right: ~'max( var( --margin-layout ), 0 )';
+				margin-left: ~'max( var( --margin-layout ), var( --width-toc ) )';
+			}
+		}
+	}
+}

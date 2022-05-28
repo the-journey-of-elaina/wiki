@@ -1,0 +1,156 @@
+/*
+ * Citizen - CSS variables
+ * https://starcitizen.tools
+*/
+
+@import '../../variables.less';
+
+/**
+ * Base theme
+ */
+:root {
+	/* Background Colors */
+	--background-color-dp-00: @background-color-dp-00;
+	--background-color-dp-01: @background-color-dp-01;
+	--background-color-dp-02: @background-color-dp-02;
+	--background-color-dp-03: @background-color-dp-03;
+	--background-color-dp-04: @background-color-dp-04;
+	--background-color-dp-06: @background-color-dp-06;
+	--background-color-dp-08: @background-color-dp-08;
+	--background-color-dp-12: @background-color-dp-12;
+	--background-color-dp-16: @background-color-dp-16;
+	--background-color-dp-24: @background-color-dp-24;
+
+	--background-color-overlay: @background-color-overlay;
+	--background-color-overlay--lighter: @background-color-overlay--lighter;
+
+	--background-color-framed: @background-color-framed;
+	--background-color-framed--hover: @background-color-framed--hover;
+	--background-color-framed--active: @background-color-framed--active;
+	--background-color-input: @background-color-input;
+	--background-color-icon: @background-color-icon;
+	--background-color-icon--hover: @background-color-icon--hover;
+	--background-color-icon--active: @background-color-icon--active;
+	--background-color-quiet--hover: @background-color-quiet--hover;
+	--background-color-quiet--active: @background-color-quiet--active;
+
+	--background-color-destructive: @background-color-destructive;
+	--background-color-warning: @background-color-warning;
+	--background-color-success: @background-color-success;
+
+	/* Foreground Colors */
+	--color-base: @color-base;
+	--color-base--emphasized: @color-base--emphasized;
+	--color-base--subtle: @color-base--subtle;
+
+	--color-destructive: @color-destructive;
+	--color-destructive--hover: @color-destructive--hover;
+	--color-destructive--active: @color-destructive--active;
+
+	--color-warning: @color-warning;
+	--color-success: @color-success;
+
+	--color-link-new: @color-link-new;
+	--color-link-new--hover: @color-link-new--hover;
+	--color-link-new--active: @color-link-new--active;
+
+	/* Opacity */
+	--opacity-base--disabled: @opacity-base--disabled;
+	--opacity-icon-base: @opacity-icon-base;
+	--opacity-icon-base--hover: @opacity-icon-base--hover;
+	--opacity-icon-base--active: @opacity-icon-base--active;
+
+	/* Size */
+	--size-icon: @size-icon;
+
+	/* Border Colors */
+	--border-color-base: @border-color-base;
+	--border-color-base--lighter: @border-color-base--lighter;
+	--border-color-base--darker: @border-color-base--darker;
+	--border-color-input: @border-color-input;
+	--border-color-input--hover: @border-color-input--hover;
+
+	/* Border radius */
+	--border-radius--small: @border-radius--small;
+	--border-radius--medium: @border-radius--medium;
+	--border-radius--large: @border-radius--large;
+
+	/* Fonts */
+	--font-family-base: @fonts;
+	--font-family-serif: @fonts-serif;
+	--font-family-monospace: @fonts-monospace;
+}
+
+html {
+	/* Size */
+	--height-header: @height-header;
+	--width-layout: @width-layout;
+	--line-height: @line-height;
+
+	/* Margin */
+	--margin-layout: ~'calc( ( 100vw - var( --width-layout ) ) / 2 )';
+
+	/* Padding */
+	--padding-page: @padding-page;
+	--padding-page--negative: ~'calc( var( --padding-page) * -1 )';
+}
+
+/**
+ * Dark theme
+ */
+:root.skin-citizen-dark {
+	/* Background Colors */
+	--background-color-dp-00: @dark-background-color-dp-00;
+	--background-color-dp-01: @dark-background-color-dp-01;
+	--background-color-dp-02: @dark-background-color-dp-02;
+	--background-color-dp-03: @dark-background-color-dp-03;
+	--background-color-dp-04: @dark-background-color-dp-04;
+	--background-color-dp-06: @dark-background-color-dp-06;
+	--background-color-dp-08: @dark-background-color-dp-08;
+	--background-color-dp-12: @dark-background-color-dp-12;
+	--background-color-dp-16: @dark-background-color-dp-16;
+	--background-color-dp-24: @dark-background-color-dp-24;
+
+	--background-color-overlay: @dark-background-color-overlay;
+	--background-color-overlay--lighter: @dark-background-color-overlay--lighter;
+
+	--background-color-framed: @dark-background-color-framed;
+	--background-color-framed--hover: @dark-background-color-framed--hover;
+	--background-color-framed--active: @dark-background-color-framed--active;
+	--background-color-input: @dark-background-color-input;
+	--background-color-icon: @dark-background-color-icon;
+	--background-color-icon--hover: @dark-background-color-icon--hover;
+	--background-color-icon--active: @dark-background-color-icon--active;
+	--background-color-quiet--hover: @dark-background-color-quiet--hover;
+	--background-color-quiet--active: @dark-background-color-quiet--active;
+
+	--background-color-destructive: @dark-background-color-destructive;
+	--background-color-warning: @dark-background-color-warning;
+	--background-color-success: @dark-background-color-success;
+
+	/* Foreground Colors */
+	--color-base: @dark-color-base;
+	--color-base--emphasized: @dark-color-base--emphasized;
+	--color-base--subtle: @dark-color-base--subtle;
+
+	--color-link-new: @dark-color-link-new;
+	--color-link-new--hover: @dark-color-link-new--hover;
+	--color-link-new--active: @dark-color-link-new--active;
+
+	/* Opacity */
+	--opacity-icon-base--active: @dark-opacity-icon-base--active;
+
+	/* Border Colors */
+	--border-color-base: @dark-border-color-base;
+	--border-color-base--lighter: @dark-border-color-base--lighter;
+	--border-color-base--darker: @dark-border-color-base--darker;
+	--border-color-input: @dark-border-color-input;
+	--border-color-input--hover: @dark-border-color-input--hover;
+}
+
+.skin-citizen-dark {
+	.mw-header {
+		// Used for header gradient only
+		--background-color-dp-00--rgb: @dark-background-color-dp-00--rgb;
+	}
+}

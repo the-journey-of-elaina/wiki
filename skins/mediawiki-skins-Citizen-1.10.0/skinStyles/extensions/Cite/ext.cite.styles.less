@@ -1,0 +1,42 @@
+/*
+ * Citizen - Cite styles
+ * https://starcitizen.tools
+*/
+
+@import '../../../resources/variables.less';
+
+.mw-references-wrap {
+	margin-top: @content-margin-top;
+	color: var( --color-base );
+	font-size: @content-small-text-size;
+}
+
+.mw-body-content {
+	.references {
+		margin: 0 @content-margin-top * 2;
+
+		li {
+			margin-bottom: @content-margin-top / 4;
+		}
+	}
+}
+
+span.reference {
+	font-size: 80%;
+}
+
+.skin-citizen {
+	ol.references li:target,
+	sup.reference:target {
+		background-color: var( --background-color-primary--hover );
+	}
+}
+
+.skin-citizen-dark {
+	ol.references li:target,
+	sup.reference:target {
+		a {
+			color: var( --color-base--emphasized );
+		}
+	}
+}

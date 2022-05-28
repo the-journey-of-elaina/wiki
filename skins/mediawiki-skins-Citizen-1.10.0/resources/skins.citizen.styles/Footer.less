@@ -1,0 +1,155 @@
+.last-modified-bar {
+	background: @color-footer-background-60;
+
+	&-content {
+		display: flex;
+		max-width: @footer-width;
+		align-items: center;
+		padding: 12px var( --padding-page );
+		margin: 0 auto;
+	}
+
+	&-icon {
+		width: 20px;
+		height: 20px;
+		margin-right: @icon-padding;
+		background-position: center;
+		background-repeat: no-repeat;
+		opacity: var( --opacity-icon-base );
+	}
+
+	&-text {
+		a {
+			margin-right: 5px;
+		}
+	}
+}
+
+.mw-footer {
+	position: relative;
+	z-index: 8; // High enough so it covers the floating UI
+	margin-top: var( --padding-page );
+	background: @color-footer-background-50;
+	clear: both;
+	color: @color-footer-text;
+	direction: ltr;
+	font-size: @ui-menu-text;
+	line-height: @footer-line-height;
+
+	// Footer spacer
+	&:before {
+		position: absolute;
+		top: ~'calc( var( --padding-page ) * -2 )';
+		right: 0;
+		left: 0;
+		display: block;
+		height: ~'calc( var( --padding-page ) * 2 )';
+		background: var( --color-surface-0 );
+		content: '';
+		-webkit-mask-image: linear-gradient( 0deg, #000, transparent );
+		mask-image: linear-gradient( 0deg, #000, transparent );
+	}
+
+	a,
+	a.external {
+		color: @color-footer-link;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: @color-footer-link-active;
+			text-decoration: none;
+		}
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0;
+	}
+
+	li {
+		list-style: none;
+	}
+}
+
+#footer {
+	&-content {
+		display: flex;
+		max-width: @footer-width;
+		flex-direction: column;
+		padding: 0 var( --padding-page );
+		margin: 0 auto;
+	}
+
+	&-bottom {
+		margin-top: @margin-side * 1.5;
+		background-color: @color-footer-background-40;
+
+		&-content {
+			display: flex;
+			max-width: @footer-width;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			padding: @margin-side / 2 var( --padding-page );
+			margin: 0 auto;
+		}
+	}
+
+	&-sitetitle {
+		margin: @margin-side * 2.5 0 @margin-side / 2 0;
+		color: @base-90;
+		font-size: 20px;
+
+		img.mw-logo-wordmark {
+			width: auto;
+			height: 20px;
+			filter: invert( 1 ) hue-rotate( 180deg );
+		}
+	}
+
+	&-desc {
+		margin: @margin-side / 2 0;
+	}
+
+	&-places {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -@margin-side !important;
+
+		li a {
+			display: block;
+			padding: @margin-side / 2 var( --padding-page );
+		}
+	}
+
+	&-info {
+		margin-top: @margin-side / 2;
+		font-size: 12px;
+		opacity: 0.5;
+
+		li {
+			margin: @margin-side / 2 0;
+		}
+	}
+
+	&-tagline {
+		padding: @margin-side / 2 0;
+	}
+
+	&-icons {
+		display: flex;
+		margin: 0 -@margin-side / 2;
+
+		li {
+			display: flex; // Horizontally aligned with there are two icons in the same li
+		}
+
+		a {
+			display: flex;
+			align-items: center;
+			padding: 15px 10px;
+		}
+	}
+}

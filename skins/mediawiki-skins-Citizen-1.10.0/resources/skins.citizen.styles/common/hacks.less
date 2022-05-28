@@ -1,0 +1,33 @@
+// Hide RSS icon
+a.feedlink {
+	background: none !important;
+}
+
+// CSS checkbox hack
+.mw-checkbox-hack {
+	&-checkbox {
+		display: none;
+	}
+
+	&-button {
+		overflow: hidden;
+		text-indent: -999px;
+	}
+}
+
+.screen-reader-text {
+	position: absolute !important;
+	//.mixin-screen-reader-text;
+	display: block !important;
+	overflow: hidden !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	border: 0 !important;
+	margin: -1px !important;
+	clip: rect( 1px, 1px, 1px, 1px ) !important;
+}
+
+.mw-empty-elt {
+	display: none;
+}
